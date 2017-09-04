@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:cmn="http://schemas.hp.com/SM/7/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ns="http://schemas.hp.com/SM/7" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://schemas.xmlsoap.org/wsdl/  http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://schemas.hp.com/SM/7" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xs:schema xmlns="http://schemas.hp.com/SM/7" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.hp.com/SM/7" version="2017-08-31 Rev 0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import schemaLocation="http://www.w3.org/2005/05/xmlmime" namespace="http://www.w3.org/2005/05/xmlmime" />
+      <xs:import schemaLocation="http://DESKTOP-V48S1TQ:13080/SM/7/Common.xsd" namespace="http://schemas.hp.com/SM/7/Common" />
+      <xs:complexType name="PassResetOperatorKeysType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="UserName" nillable="true" type="cmn:StringType" />
+        </xs:sequence>
+        <xs:attribute name="query" type="xs:string" use="optional" />
+        <xs:attribute name="updatecounter" type="xs:long" use="optional" />
+      </xs:complexType>
+      <xs:complexType name="PassResetOperatorInstanceType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="UserName" nillable="true" type="cmn:StringType" />
+          <xs:element minOccurs="0" name="Email" nillable="true" type="cmn:StringType" />
+          <xs:element minOccurs="0" name="attachments" nillable="true" type="cmn:AttachmentsType" />
+        </xs:sequence>
+        <xs:attribute name="query" type="xs:string" use="optional" />
+        <xs:attribute name="uniquequery" type="xs:string" use="optional" />
+        <xs:attribute name="recordid" type="xs:string" use="optional" />
+        <xs:attribute name="updatecounter" type="xs:long" use="optional" />
+      </xs:complexType>
+      <xs:complexType name="PassResetOperatorModelType">
+        <xs:sequence>
+          <xs:element name="keys" type="ns:PassResetOperatorKeysType" />
+          <xs:element name="instance" type="ns:PassResetOperatorInstanceType" />
+          <xs:element minOccurs="0" name="messages" type="cmn:MessagesType" />
+        </xs:sequence>
+        <xs:attribute name="query" type="xs:string" use="optional" />
+      </xs:complexType>
+      <xs:element name="RetrievePassResetOperatorRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="ns:PassResetOperatorModelType" />
+          </xs:sequence>
+          <xs:attribute name="attachmentInfo" type="xs:boolean" use="optional" />
+          <xs:attribute name="attachmentData" type="xs:boolean" use="optional" />
+          <xs:attribute default="true" name="ignoreEmptyElements" type="xs:boolean" use="optional" />
+          <xs:attribute name="updatecounter" type="xs:boolean" use="optional" />
+          <xs:attribute name="handle" type="xs:string" use="optional" />
+          <xs:attribute name="count" type="xs:long" use="optional" />
+          <xs:attribute name="start" type="xs:long" use="optional" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RetrievePassResetOperatorResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="ns:PassResetOperatorModelType" />
+            <xs:element minOccurs="0" name="messages" type="cmn:MessagesType" />
+          </xs:sequence>
+          <xs:attribute name="status" type="cmn:StatusType" use="required" />
+          <xs:attribute name="message" type="xs:string" use="required" />
+          <xs:attribute name="schemaRevisionDate" type="xs:date" use="required" />
+          <xs:attribute name="schemaRevisionLevel" type="xs:int" use="required" />
+          <xs:attribute name="returnCode" type="xs:decimal" use="optional" />
+          <xs:attribute name="query" type="xs:string" use="optional" />
+          <xs:attribute name="handle" type="xs:string" use="optional" />
+          <xs:attribute name="count" type="xs:long" use="optional" />
+          <xs:attribute name="more" type="xs:boolean" use="optional" />
+          <xs:attribute name="start" type="xs:long" use="optional" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RetrievePassResetOperatorKeysListRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="ns:PassResetOperatorModelType" />
+          </xs:sequence>
+          <xs:attribute name="attachmentInfo" type="xs:boolean" use="optional" />
+          <xs:attribute name="attachmentData" type="xs:boolean" use="optional" />
+          <xs:attribute default="true" name="ignoreEmptyElements" type="xs:boolean" use="optional" />
+          <xs:attribute name="updatecounter" type="xs:boolean" use="optional" />
+          <xs:attribute name="handle" type="xs:string" use="optional" />
+          <xs:attribute name="count" type="xs:long" use="optional" />
+          <xs:attribute name="start" type="xs:long" use="optional" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RetrievePassResetOperatorKeysListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="keys" type="ns:PassResetOperatorKeysType" />
+            <xs:element minOccurs="0" name="messages" type="cmn:MessagesType" />
+          </xs:sequence>
+          <xs:attribute name="status" type="cmn:StatusType" use="required" />
+          <xs:attribute name="message" type="xs:string" use="required" />
+          <xs:attribute name="schemaRevisionDate" type="xs:date" use="required" />
+          <xs:attribute name="schemaRevisionLevel" type="xs:int" use="required" />
+          <xs:attribute name="returnCode" type="xs:decimal" use="optional" />
+          <xs:attribute name="query" type="xs:string" use="optional" />
+          <xs:attribute name="handle" type="xs:string" use="optional" />
+          <xs:attribute name="count" type="xs:long" use="optional" />
+          <xs:attribute name="more" type="xs:boolean" use="optional" />
+          <xs:attribute name="start" type="xs:long" use="optional" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RetrievePassResetOperatorListRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="keys" type="ns:PassResetOperatorKeysType" />
+          </xs:sequence>
+          <xs:attribute name="attachmentInfo" type="xs:boolean" use="optional" />
+          <xs:attribute name="attachmentData" type="xs:boolean" use="optional" />
+          <xs:attribute default="true" name="ignoreEmptyElements" type="xs:boolean" use="optional" />
+          <xs:attribute name="updatecounter" type="xs:boolean" use="optional" />
+          <xs:attribute name="handle" type="xs:string" use="optional" />
+          <xs:attribute name="count" type="xs:long" use="optional" />
+          <xs:attribute name="start" type="xs:long" use="optional" />
+          <xs:attribute name="attachmentType" type="xs:long" use="optional" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RetrievePassResetOperatorListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="instance" type="ns:PassResetOperatorInstanceType" />
+            <xs:element minOccurs="0" name="messages" type="cmn:MessagesType" />
+          </xs:sequence>
+          <xs:attribute name="status" type="cmn:StatusType" use="required" />
+          <xs:attribute name="message" type="xs:string" use="required" />
+          <xs:attribute name="schemaRevisionDate" type="xs:date" use="required" />
+          <xs:attribute name="schemaRevisionLevel" type="xs:int" use="required" />
+          <xs:attribute name="returnCode" type="xs:decimal" use="optional" />
+          <xs:attribute name="query" type="xs:string" use="optional" />
+          <xs:attribute name="handle" type="xs:string" use="optional" />
+          <xs:attribute name="count" type="xs:long" use="optional" />
+          <xs:attribute name="more" type="xs:boolean" use="optional" />
+          <xs:attribute name="start" type="xs:long" use="optional" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SavePassResetOperatorRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="ns:PassResetOperatorModelType" />
+          </xs:sequence>
+          <xs:attribute name="attachmentInfo" type="xs:boolean" use="optional" />
+          <xs:attribute name="attachmentData" type="xs:boolean" use="optional" />
+          <xs:attribute default="true" name="ignoreEmptyElements" type="xs:boolean" use="optional" />
+          <xs:attribute default="-1" name="updateconstraint" type="xs:long" use="optional" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SavePassResetOperatorResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="ns:PassResetOperatorModelType" />
+            <xs:element minOccurs="0" name="messages" type="cmn:MessagesType" />
+          </xs:sequence>
+          <xs:attribute name="status" type="cmn:StatusType" use="required" />
+          <xs:attribute name="message" type="xs:string" use="required" />
+          <xs:attribute name="schemaRevisionDate" type="xs:date" use="required" />
+          <xs:attribute name="schemaRevisionLevel" type="xs:int" use="required" />
+          <xs:attribute name="returnCode" type="xs:decimal" use="optional" />
+          <xs:attribute name="query" type="xs:string" use="optional" />
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </types>
+  <message name="RetrievePassResetOperatorRequest">
+    <part name="RetrievePassResetOperatorRequest" element="ns:RetrievePassResetOperatorRequest" />
+  </message>
+  <message name="RetrievePassResetOperatorResponse">
+    <part name="RetrievePassResetOperatorResponse" element="ns:RetrievePassResetOperatorResponse" />
+  </message>
+  <message name="RetrievePassResetOperatorKeysListRequest">
+    <part name="RetrievePassResetOperatorKeysListRequest" element="ns:RetrievePassResetOperatorKeysListRequest" />
+  </message>
+  <message name="RetrievePassResetOperatorKeysListResponse">
+    <part name="RetrievePassResetOperatorKeysListResponse" element="ns:RetrievePassResetOperatorKeysListResponse" />
+  </message>
+  <message name="RetrievePassResetOperatorListRequest">
+    <part name="RetrievePassResetOperatorListRequest" element="ns:RetrievePassResetOperatorListRequest" />
+  </message>
+  <message name="RetrievePassResetOperatorListResponse">
+    <part name="RetrievePassResetOperatorListResponse" element="ns:RetrievePassResetOperatorListResponse" />
+  </message>
+  <message name="SavePassResetOperatorRequest">
+    <part name="SavePassResetOperatorRequest" element="ns:SavePassResetOperatorRequest" />
+  </message>
+  <message name="SavePassResetOperatorResponse">
+    <part name="SavePassResetOperatorResponse" element="ns:SavePassResetOperatorResponse" />
+  </message>
+  <portType name="PassResetOperator">
+    <operation name="RetrievePassResetOperator">
+      <documentation />
+      <input message="ns:RetrievePassResetOperatorRequest" />
+      <output message="ns:RetrievePassResetOperatorResponse" />
+    </operation>
+    <operation name="RetrievePassResetOperatorKeysList">
+      <documentation />
+      <input message="ns:RetrievePassResetOperatorKeysListRequest" />
+      <output message="ns:RetrievePassResetOperatorKeysListResponse" />
+    </operation>
+    <operation name="RetrievePassResetOperatorList">
+      <documentation />
+      <input message="ns:RetrievePassResetOperatorListRequest" />
+      <output message="ns:RetrievePassResetOperatorListResponse" />
+    </operation>
+    <operation name="SavePassResetOperator">
+      <documentation />
+      <input message="ns:SavePassResetOperatorRequest" />
+      <output message="ns:SavePassResetOperatorResponse" />
+    </operation>
+  </portType>
+  <binding name="PassResetOperator" type="ns:PassResetOperator">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="RetrievePassResetOperator">
+      <soap:operation soapAction="Retrieve" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="RetrievePassResetOperatorKeysList">
+      <soap:operation soapAction="RetrieveKeysList" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="RetrievePassResetOperatorList">
+      <soap:operation soapAction="RetrieveList" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SavePassResetOperator">
+      <soap:operation soapAction="Save" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="PassResetOperator">
+    <port name="PassResetOperator" binding="ns:PassResetOperator">
+      <soap:address location="http://DESKTOP-V48S1TQ:13080/SM/7/ws" />
+    </port>
+  </service>
+</definitions>
